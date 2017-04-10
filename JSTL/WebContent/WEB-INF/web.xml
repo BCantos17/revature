@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>JSTL</display-name>
+
+	<servlet>
+		<servlet-name>dispatch</servlet-name>
+		<servlet-class>com.revature.web.DispatcherServlet</servlet-class>
+		<!-- configure only one servlets -->
+		<init-param>
+			<param-name>configFile</param-name>
+			<param-value>/WEB-INF/config.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dispatch</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- shared by all filters, servlets, any resources -->
+	<context-param>
+		<param-name></param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>error</servlet-name>
+		<servlet-class>com.revature.error.ErrorServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>error</servlet-name>
+		<url-pattern>/e</url-pattern>
+	</servlet-mapping>
+
+	<error-page>
+		<exception-type>java.lang.IllegalArgumentException</exception-type>
+		<location>/e</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/e</location>
+	</error-page>
+
+</web-app>

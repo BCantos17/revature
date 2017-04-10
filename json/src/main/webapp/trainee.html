@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Trainee Datas</title>
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+  
+<style type="text/css">
+.confirm{
+	background-color: green;
+	
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){ //DOMContentloaded event listener
+ 	$("#name").keyup(function(){
+		var name = $("#name").val();
+		
+		// null check
+		if(name){
+			// if not null: enable
+			//$("#add").attr("disabled"); // getter
+			$("#add").removeAttr("disable");
+			$("#add").attr("enabled", "enabled"); // setter
+		}else{
+			$("#add").removeAttr("disable");
+			$("#add").attr("disabled", "disabled"); // setter
+		}
+	
+	});,
+	
+	$("#add").click(function(){
+		var name = $("#name").val(); // extracts the value property
+		// null check
+		if(!name){
+			alert("Please enter a name!");
+		}
+		var newRow = "<tr><td>" + name + "</td></tr>";
+	
+		
+		// JQuery
+		$("#traineeTable").append(newRow);
+		
+		$("#add").addClass("confirm");
+		window.setTimeout(function(){
+			$("#add").removeClass("confirm");
+		
+		}, 1500);
+		
+	});
+
+});
+
+</script>
+</head>
+<body>
+<input type="text" id="name"/> <br>
+<button id="add" class="confirmed" disabled >Add</button>
+
+<table id="traineeTable">
+	<tr><td></td></tr>
+</table>
+
+</body>
+</html>

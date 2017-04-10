@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+	<!-- Datasource -->
+	<bean name="ds" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="username" value= />
+		<property name="password" value="" />
+		<property name="url" value="" />
+	</bean>
+	<!-- SessionFactory -->
+	<bean name="sf" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="ds"/>
+		<property name="packagesToScan" value="com.revature.beans"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.connection.pool_size">20</prop>
+				<prop key="hiberate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+			</props>
+		</property>
+	<tx:annotation-driven/>
+	</bean>
+	<!-- Transaction Manager -->
+	<bean name="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sf"/>
+	</bean>
+	<!-- DAO bean -->
+	<bean name="dao" class="com.revature.orm.DAO">
+		<property name="sessionFactory" ref="sf"/>
+	</bean>
+
+	<!-- Facade bean -->
+	<bean name="facade" class="com.revature.orm.Facade">
+		<property name="dao" ref="dao"></property>
+	</bean>
+
+</beans>

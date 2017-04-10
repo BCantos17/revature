@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Tabluar Datas</title>
+<script type="text/javascript" src="https://code.angularjs.org/1.6.1/angular.js"></script>
+</head>
+<body ng-app="tabluar">
+	<div ng-controller="tableExample">
+		<table>
+			<tr><th>Id</th><th>Name</th></tr>
+			<!-- repeat TR for-each 'person' in $scope.data -->
+			<tr ng-repeat="person in data">
+				<td>{{person.id}}</td>
+				<td>{{person.name}}</td>
+			</tr>
+		</table>
+	</div>
+</body>
+<script type="text/javascript">
+angular.module("tabluar",  []);
+
+angular.module("tabluar").controller("tableExample", function($scope){
+	// Data cominng from the server
+	$scope.data = [
+		{id: 1, name: 'Dan'},
+		{id: 2, name: 'Randolph'},
+		{id: 3, name: 'Bryan'}
+	];
+
+})
+
+</script>
+
+</html>

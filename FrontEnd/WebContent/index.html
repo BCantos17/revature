@@ -1,0 +1,59 @@
+<!-- HTML: Tells broswer how to render the page
+		HTML: view data; XML: describe data
+ -->
+<html>
+	<head> <!-- other than title.. not visible -->
+		<title>Welcome to my Homepage</title>
+		
+	</head>
+	
+	<body> <!-- visible to the browser -->
+	<nav>Navigation</nav>
+	<div style="background-color: blue">Header</div>
+	<span style="background-color: green">my span text</span>
+	<div style="background-color: white">Content</div>
+	<div style="background-color: red">Footer</div>
+	
+	<h1>Personal Form</h1>
+	<form action="#"> <!-- sumbit a form -->
+	<table>
+		<tr> <td>Name:</td> <td><input type="text" /></td> <tr>
+		<tr> <td>Age:</td> <td><input type="number" name="age" /></td> <tr>
+		<tr> <td>Birthday</td> <td><input type="date" name="birthday" /></td> <tr>
+		<tr> 
+			<td>
+				Gender: 
+			</td> 
+			<td>
+				Male <input type="radio" name="gender" value="M" />
+				Female <input type="radio" name="gender" value="F" />
+				Other <input type="radio" name="gender" value="O" />
+			</td> 
+		<tr>
+		<tr> 
+			<td>
+				Ethnicity: 
+			</td> 
+			<td>
+				Caucasion<input type="checkbox" name="ethnicity" value="Caucasion"/>
+				African America<input type="checkbox" name="ethnicity" value="African America"/>
+				Pacific Island<input type="checkbox" name="ethnicity" value="Pacific Island"/>
+				Hispanic <input type="checkbox" name="ethnicity" value="Hispanic"/>
+			</td> 
+		<tr>
+		<tr> 
+			<td>
+				<input type="reset"  value="Reset"/>
+			</td> 
+			<td>
+				<input type="submit" value="Go!" />
+			</td> 
+		<tr>
+		
+	</table>
+		<!-- name attr is used by the server -->
+	</form>
+	
+	<img alt="Picture of Ninja Cat" src="https://fennychandra.files.wordpress.com/2010/11/ninja-cat1.jpg">
+	</body>
+</html>
